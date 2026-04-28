@@ -1,0 +1,650 @@
+    @font-face {
+      font-family: "BalooRegular";
+      src: url("../../fonts/Baloo Regular 400.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "bakbakoneRegular";
+      src: url("../../fonts/bakbak-one-latin-400-normal.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+
+    }
+
+    @font-face {
+      font-family: "LilitaOneRegular";
+      src: url("../../fonts/LilitaOne-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+
+    @font-face {
+      font-family: "NotoSansGujaratiBold";
+      src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "NotoSansGujaratiRegular";
+      src: url("../../fonts/NotoSansGujarati-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      width: 100vw !important;
+      height: auto;
+      overflow-y: scroll;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .title {
+      position: absolute;
+      top: 1vw;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      padding: 0.3vw 2vw;
+      border-radius: 1vw;
+      background-color: #3E6FFB;
+      text-align: center;
+      font-weight: lighter !important;
+      font-family: "bakbakoneRegular";
+      box-shadow: 0 0.25vw 0.2vw rgba(0, 0, 0, 0.314);
+    }
+
+    .title span {
+      display: block;
+      color: white;
+      font-size: 5vw;
+      line-height: 1;
+    }
+
+    .title .description {
+      display: block;
+      color: white;
+      font-size: 2vw;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+
+    html[lang="Hindi"] .title span,
+    html[lang="Gujarati"] .title span {
+      font-size: 5vw;
+      font-weight: 700;
+    }
+
+    html[lang="Hindi"] .title .description,
+    html[lang="Gujarati"] .title .description {
+      font-size: 2vw;
+      font-weight: 400;
+    }
+
+    .language-container {
+      position: fixed;
+      top: 3vw;
+      right: 4%;
+      display: flex;
+      width: 8.4vw;
+      padding: 0.2vw;
+      height: auto;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "BalooRegular";
+      border: 0.25vw solid #E9A42E;
+      border-radius: 50vw;
+      z-index: 9999;
+      box-shadow: 0 0.3vw 0.2vw rgba(0, 0, 0, 0.314);
+    }
+
+    .language-container div {
+      width: 2.2vw;
+      height: 2.2vw;
+      font-size: 1.7vw;
+      text-align: center;
+      border: 0.25vw solid #E9A42E;
+      background-color: #E9A42E;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: auto;
+      border-radius: 50%;
+      z-index: 100;
+      font-weight: 600;
+      font-family: "BalooRegular", sans-serif;
+    }
+
+    .language-container div:hover {
+      color: white;
+      background-color: #FF4EC6;
+    }
+
+    .language-container div.active {
+      color: white;
+      background-color: #FF4EC6;
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 3vw;
+      left: 3%;
+      width: 3.5vw;
+      height: auto;
+      z-index: 50;
+      transform: scale(1);
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .home-btn img {
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .home-btn:hover {
+      transform: scale(1.2);
+    }
+
+    main {
+      position: relative;
+      width: 100%;
+      height: 48vw;
+    }
+
+    .home-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-container .left-home-container,
+    .home-container .right-home-container {
+      position: relative;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+
+    .home-container .left-home-container {
+      width: 55%;
+    }
+
+    .home-container .right-home-container {
+      width: 45%;
+    }
+
+    .hero-img-wrap {
+      margin-top: 5vw;
+      position: relative;
+      width: 70%;
+      height: 100%;
+      z-index: 20;
+    }
+
+    /* shadow */
+    .hero-img-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.089);
+      filter: blur(1px);
+      transform: scale(1.03);
+      z-index: 1;
+
+      -webkit-mask-image: url("../images/heart-mask-image.png");
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+
+      mask-image: url("../images/heart-mask-image.png");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+    /* border */
+    .hero-img-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: white;
+      transform: scale(1.02);
+      z-index: 2;
+
+      -webkit-mask-image: url("../images/heart-mask-image.png");
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+
+      mask-image: url("../images/heart-mask-image.png");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    } 
+
+    .hero-img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 3;
+
+      -webkit-mask-image: url("../images/heart-mask-image.png");
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+
+      mask-image: url("../images/heart-mask-image.png");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+    .hero-img video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 4;
+    }
+
+    .topics {
+      position: relative;
+      width: 60%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2vw;
+      gap: 1.5vw
+    }
+
+    .topics .topic {
+      text-decoration: none;
+      width: 70%;
+      height: 5vw !important;
+      color: white;
+      height: auto;
+      background-color: #FF4EC6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.7vw;
+      font-family: "LilitaOneRegular";
+      font-size: 1.8vw;
+      padding: 0.2vw;
+      text-align: center;
+      box-shadow: 0 0.35vw 0.2vw rgba(0, 0, 0, 0.314);
+      outline: 0.2vw solid transparent;
+      transition: background-color 0.3s ease, outline 0.3s ease, transform 0.55s ease,
+        opacity 0.55s ease,
+        filter 0.55s ease;
+      transform-origin: center center;
+    }
+
+    .topics.roll-up .topic-1 {
+      transform: translateY(0vw) scale(1);
+      z-index: 4;
+    }
+
+    .topics.roll-up .topic-2 {
+      transform: translateY(-7vw) scale(0.98);
+      z-index: 3;
+    }
+
+    .topics.roll-up .topic-3 {
+      transform: translateY(-14vw) scale(0.96);
+      z-index: 2;
+    }
+
+    .topics.roll-up .topic-4 {
+      transform: translateY(-21vw) scale(0.94);
+      z-index: 1;
+    }
+
+    .topics .topic:hover {
+      background-color: #89BF2D;
+      outline: 0.2vw solid white;
+    }
+
+    .image-swiper {
+      width: 70%;
+      height: 34vw;
+      border-radius: 4vw;
+      border: 0.4vw solid white;
+      position: relative;
+      box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.314);
+
+    }
+
+    .image-swiper .swiper-wrapper,
+    .image-swiper .swiper-slide {
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-swiper .swiper-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .custom-nav {
+      position: absolute;
+      bottom: 45%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 30vw;
+      z-index: 20;
+    }
+
+
+    .custom-prev,
+    .custom-next {
+      width: 3vw;
+      height: 3vw;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      color: black;
+      transform: scale(1);
+      opacity: 0.8;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    .custom-next:hover,
+    .custom-prev:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .custom-prev img,
+    .custom-next img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .custom-prev.hidden,
+    .custom-next.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+
+    .text-swiper {
+      width: 60%;
+      min-height: 20%;
+      margin-top: 2vw;
+      background-color: #89BF2D;
+      box-shadow: 0 0.3vw 0.2vw rgba(0, 0, 0, 0.314);
+
+      padding: 1vw;
+      border-radius: 1vw;
+    }
+
+    .text-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text-box {
+      text-align: center;
+      font-family: "BalooRegular";
+    }
+
+
+    html[lang="Hindi"] .text-box p {
+      font-weight: 400;
+    }
+
+
+    .text-box p {
+      font-size: 2vw;
+      line-height: 1.5;
+      color: white;
+      font-weight: 700;
+    }
+
+    .swiper-fade .swiper-slide {
+      transition-timing-function: ease-in-out;
+    }
+
+    .page-title {
+      width: 55%;
+      height: 4vw;
+      border-radius: 0.8vw;
+      background-color: #FF4EC6;
+      box-shadow: 0 0.25vw 0.2vw rgba(0, 0, 0, 0.314);
+      font-size: 1.8vw;
+      color: white;
+      text-align: center;
+      font-family: "LilitaOneRegular";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.3vw;
+    }
+
+
+    html[lang="Hindi"] .page-title,
+    html[lang="Gujarati"] .page-title {
+      font-weight: 700;
+    }
+
+    .pages {
+      margin-top: 1vw;
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pages .page {
+      text-decoration: none;
+      width: 3.5vw;
+      height: 3.5vw;
+      border-radius: 50%;
+      background-color: #E9A42E;
+      font-family: "BalooRegular";
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border: 0.35vw solid transparent;
+      font-size: 2.3vw;
+      box-shadow: 0 0.25vw 0.2vw rgba(0, 0, 0, 0.314);
+      transform: scale(1);
+      transition: background-color 0.3s ease, border 0.3s ease;
+    }
+
+    .pages .page:hover {
+      background-color: #FF4EC6;
+      border: 0.35vw solid #E9A42E;
+      animation: popScale 0.3s ease forwards;
+    }
+
+    .pages .page.active {
+      background-color: #FF4EC6;
+      border: 0.35vw solid #E9A42E;
+    }
+
+    @keyframes popScale {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .pranam-container {
+      position: absolute;
+      width: 45vw;
+      height: auto;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pranam-container>.pranam-img {
+      position: relative;
+      width: 85%;
+      height: auto;
+      display: block;
+    }
+
+    .pranam-container>.pranam-img>img {
+      width: 100%;
+      display: block;
+    }
+
+    .pranam-img span {
+      z-index: 15;
+      position: absolute;
+      top: 17%;
+      left: 50%;
+      font-size: 3.4vw;
+      transform: translateX(-50%);
+      font-family: "BalooRegular";
+    }
+
+    .pranam-container .home-btn-1 {
+      position: absolute;
+      top: 88%;
+      left: 35%;
+      transform: translateX(-50%);
+      width: 15vw;
+      height: auto;
+      transform: scale(1);
+      transition: transform 0.2s ease;
+    }
+
+    .home-btn-1:hover {
+      transform: scale(1.2);
+    }
+
+    .pranam-container .home-btn-1 img {
+      width: 100%;
+      display: block;
+    }
+
+    .home-btn-1 span {
+      z-index: 15;
+      position: absolute;
+      top: 45%;
+      left: 38%;
+      font-size: 2.5vw;
+      transform: translateY(-50%);
+      font-family: "BalooRegular";
+      color: #821b00;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 4%;
+      top: 4%;
+      width: 3vw;
+      height: 3vw;
+      background-color: #E9A42E;
+      border: 0.25vw solid transparent;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transform: scale(1);
+      transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease;
+      z-index: 50;
+    }
+
+    .back-btn i {
+      color: white;
+      font-size: 1.5vw;
+      transition: font-size 0.3s ease;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.05);
+      background-color: #FF4EC6;
+      border: 0.25vw solid #E9A42E;
+    }
+
+
+    .pranam-img span {
+      color: #802922;
+    }
