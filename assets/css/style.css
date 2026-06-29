@@ -265,7 +265,7 @@
       mask-repeat: no-repeat;
       mask-position: center;
       mask-size: contain;
-    } 
+    }
 
     .hero-img {
       position: relative;
@@ -647,4 +647,44 @@
 
     .pranam-img span {
       color: #802922;
+    }
+
+
+    .pranam-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 40vw;
+      top: 20vw;
+      width: 10vw;
+      height: auto;
+      text-decoration: none;
+      animation: pranamPop 1.2s ease-in-out infinite;
+      transform-origin: center;
+      position: fixed !important;
+      z-index: 99999 !important;
+      pointer-events: auto;
+      touch-action: manipulation;
+    }
+
+    .pranam-link img {
+      position: relative;
+      width: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .pranam-link img,
+    .pranam-link span {
+      pointer-events: none;
+    }
+
+    .pranam-link span {
+      position: absolute;
+      text-decoration: none;
+      color: white;
+      font-family: "LobsterTwo";
+      font-weight: bold;
+      font-size: 1.5vw;
+      padding-right: 2vw;
     }

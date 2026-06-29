@@ -40,6 +40,8 @@
     </div>
 
     <!-- Audios -->
+    <audio id="pranamAudio" src="./assets/audio/pranam.mp3" preload="auto"></audio>
+
     <audio id="backAudio" src="./assets/audio/pop.mp3" preload="auto"></audio>
     <audio id="homeAudio" src="./assets/audio/5.mp3" preload="auto"></audio>
 
@@ -58,6 +60,8 @@
         const hindiBtn = document.querySelector(".hindi");
         const gujaratiBtn = document.querySelector(".gujarati");
 
+        const pranamAudio = document.getElementById("pranamAudio");
+
         const backAudio = document.getElementById("backAudio");
         const homeAudio = document.getElementById("homeAudio");
 
@@ -66,7 +70,14 @@
         const gujAudio = document.getElementById("gujAudio");
 
         function stopAllAudio() {
-          const audios = [backAudio, homeAudio, engAudio, hinAudio, gujAudio];
+          const audios = [
+            pranamAudio,
+            backAudio,
+            homeAudio,
+            engAudio,
+            hinAudio,
+            gujAudio,
+          ];
 
           audios.forEach((audio) => {
             if (audio) {
@@ -86,10 +97,13 @@
 
           if (playPromise !== undefined) {
             playPromise.catch((error) => {
-              console.log("Audio not playing. Check file path or browser:", error);
+              console.log("Audio autoplay blocked or file path issue:", error);
             });
           }
         }
+
+        // Only play pranam.mp3 once on page load
+        playAudio(pranamAudio);
 
         backBtn?.addEventListener("click", function (e) {
           e.preventDefault();

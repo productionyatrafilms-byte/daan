@@ -15,6 +15,10 @@
       body {
         background-image: url("./assets/images/bg-image.png");
       }
+
+      .pranam-link {
+        transition: opacity 0.4s ease;
+      }
     </style>
   </head>
 
@@ -31,6 +35,15 @@
 
     <main>
       <div class="home-container">
+        <a
+          href="pranam.html"
+          class="pranam-link"
+          style="visibility: hidden; opacity: 0; pointer-events: none"
+        >
+          <img src="./assets/images/arowAsset.png" alt="" />
+          <span data-lang-key="pranam"></span>
+        </a>
+
         <div class="left-home-container">
           <div class="title">
             <span data-lang-key="title"></span>
@@ -40,27 +53,57 @@
           <div class="image-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <video src="./assets/videos/4-1.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-1.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-2.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-2.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-3.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-3.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-4.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-4.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-5.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-5.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-6.mp4" autoplay muted loop></video>
+                <video
+                  src="./assets/videos/4-6.mp4"
+                  autoplay
+                  muted
+                  loop
+                ></video>
               </div>
             </div>
           </div>
@@ -166,6 +209,7 @@
         const pageBtns = document.querySelectorAll(".pages .page");
         const prevBtn = document.querySelector(".custom-prev");
         const nextBtn = document.querySelector(".custom-next");
+        const pranamLink = document.querySelector(".pranam-link");
 
         const englishBtn = document.querySelector(".english");
         const hindiBtn = document.querySelector(".hindi");
@@ -207,7 +251,10 @@
 
           if (playPromise !== undefined) {
             playPromise.catch((error) => {
-              console.log("Audio not playing. Check file path or browser:", error);
+              console.log(
+                "Audio not playing. Check file path or browser:",
+                error,
+              );
             });
           }
         }
@@ -239,6 +286,22 @@
 
         textSwiper.controller.control = imageSwiper;
 
+        function showPranamLink() {
+          if (!pranamLink) return;
+
+          pranamLink.style.visibility = "visible";
+          pranamLink.style.opacity = "1";
+          pranamLink.style.pointerEvents = "auto";
+        }
+
+        function hidePranamLink() {
+          if (!pranamLink) return;
+
+          pranamLink.style.visibility = "hidden";
+          pranamLink.style.opacity = "0";
+          pranamLink.style.pointerEvents = "none";
+        }
+
         function updateNavButtons(swiper) {
           if (swiper.isBeginning) {
             prevBtn?.classList.add("hidden");
@@ -246,7 +309,13 @@
             prevBtn?.classList.remove("hidden");
           }
 
-          nextBtn?.classList.remove("hidden");
+          if (swiper.isEnd) {
+            nextBtn?.classList.add("hidden");
+            showPranamLink();
+          } else {
+            nextBtn?.classList.remove("hidden");
+            hidePranamLink();
+          }
         }
 
         updateNavButtons(imageSwiper);
@@ -281,16 +350,8 @@
           playAudio(navAudio);
         });
 
-        nextBtn?.addEventListener("click", function (e) {
+        nextBtn?.addEventListener("click", () => {
           playAudio(navAudio);
-
-          if (imageSwiper.isEnd) {
-            e.preventDefault();
-
-            setTimeout(() => {
-              window.location.href = "pranam.html";
-            }, 600);
-          }
         });
 
         englishBtn?.addEventListener("click", () => {
