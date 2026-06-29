@@ -22,6 +22,7 @@
     <a class="home-btn" href="index.html">
       <img src="./assets/images/home-btn.png" alt="Home" />
     </a>
+
     <div class="language-container">
       <div class="english active">E</div>
       <div class="hindi">H</div>
@@ -35,34 +36,23 @@
             <span data-lang-key="title"></span>
             <span class="description" data-lang-key="description"></span>
           </div>
+
           <div class="image-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <video src="./assets/videos/3-1.mp4" autoplay muted alt="" />
+                <video src="./assets/videos/3-1.mp4" autoplay muted loop></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/3-2.mp4" autoplay muted alt="" />
+                <video src="./assets/videos/3-2.mp4" autoplay muted loop></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/3-3.mp4" autoplay muted alt="" />
+                <video src="./assets/videos/3-3.mp4" autoplay muted loop></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/3-4.mp4" autoplay muted alt="" />
+                <video src="./assets/videos/3-4.mp4" autoplay muted loop></video>
               </div>
               <div class="swiper-slide">
-                <video src="./assets/videos/3-5.mp4" autoplay muted alt="" />
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/3-6.mp4" autoplay muted alt="" />
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/3-7.mp4" autoplay muted alt="" />
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/3-8.mp4" autoplay muted alt="" />
-              </div>
-              <div class="swiper-slide">
-                <video src="./assets/videos/3-9.mp4" autoplay muted alt="" />
+                <video src="./assets/videos/3-9.mp4" autoplay muted loop></video>
               </div>
             </div>
           </div>
@@ -79,6 +69,7 @@
 
         <div class="right-home-container">
           <div class="page-title" data-lang-key="title-3"></div>
+
           <div class="text-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
@@ -107,51 +98,31 @@
 
               <div class="swiper-slide">
                 <div class="text-box">
-                  <p data-lang-key="slide-3.5"></p>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="text-box">
-                  <p data-lang-key="slide-3.6"></p>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="text-box">
-                  <p data-lang-key="slide-3.7"></p>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="text-box">
-                  <p data-lang-key="slide-3.8"></p>
-                </div>
-              </div>
-
-              <div class="swiper-slide">
-                <div class="text-box">
                   <p data-lang-key="slide-3.9"></p>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="pages">
             <a
               href="what-is-daan.html"
               class="page page-1"
               data-lang-key="num-1"
             ></a>
+
             <a
               href="why-should-we-give.html"
               class="page page-2"
               data-lang-key="num-2"
             ></a>
+
             <a
               href="what-can-we-give.html"
               class="page page-3"
               data-lang-key="num-3"
             ></a>
+
             <a
               href="types-of-daan.html"
               class="page page-4"
@@ -162,8 +133,163 @@
       </div>
     </main>
 
+    <!-- Audios -->
+    <audio id="homeAudio" src="./assets/audio/pop.mp3" preload="auto"></audio>
+    <audio id="pageAudio" src="./assets/audio/11.mp3" preload="auto"></audio>
+    <audio id="navAudio" src="./assets/audio/5.mp3" preload="auto"></audio>
+
+    <audio id="engAudio" src="./assets/audio/Eng.mpeg" preload="auto"></audio>
+    <audio id="hinAudio" src="./assets/audio/Hin.mpeg" preload="auto"></audio>
+    <audio id="gujAudio" src="./assets/audio/Guj.mpeg" preload="auto"></audio>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./assets/js/app.js"></script>
-    <script src="./assets/js/swiper.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const homeBtn = document.querySelector(".home-btn");
+        const pageBtns = document.querySelectorAll(".pages .page");
+        const prevBtn = document.querySelector(".custom-prev");
+        const nextBtn = document.querySelector(".custom-next");
+
+        const englishBtn = document.querySelector(".english");
+        const hindiBtn = document.querySelector(".hindi");
+        const gujaratiBtn = document.querySelector(".gujarati");
+
+        const homeAudio = document.getElementById("homeAudio");
+        const pageAudio = document.getElementById("pageAudio");
+        const navAudio = document.getElementById("navAudio");
+
+        const engAudio = document.getElementById("engAudio");
+        const hinAudio = document.getElementById("hinAudio");
+        const gujAudio = document.getElementById("gujAudio");
+
+        function stopAllAudio() {
+          const audios = [
+            homeAudio,
+            pageAudio,
+            navAudio,
+            engAudio,
+            hinAudio,
+            gujAudio,
+          ];
+
+          audios.forEach((audio) => {
+            if (audio) {
+              audio.pause();
+              audio.currentTime = 0;
+            }
+          });
+        }
+
+        function playAudio(audio) {
+          if (!audio) return;
+
+          stopAllAudio();
+          audio.currentTime = 0;
+
+          const playPromise = audio.play();
+
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Audio not playing. Check file path or browser:", error);
+            });
+          }
+        }
+
+        const textSwiper = new Swiper(".text-swiper", {
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+          speed: 1200,
+          allowTouchMove: false,
+        });
+
+        const imageSwiper = new Swiper(".image-swiper", {
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+          speed: 1200,
+          allowTouchMove: false,
+          navigation: {
+            prevEl: ".custom-prev",
+            nextEl: ".custom-next",
+          },
+          controller: {
+            control: textSwiper,
+          },
+        });
+
+        textSwiper.controller.control = imageSwiper;
+
+        function updateNavButtons(swiper) {
+          if (swiper.isBeginning) {
+            prevBtn?.classList.add("hidden");
+          } else {
+            prevBtn?.classList.remove("hidden");
+          }
+
+          nextBtn?.classList.remove("hidden");
+        }
+
+        updateNavButtons(imageSwiper);
+
+        imageSwiper.on("slideChange", function () {
+          updateNavButtons(imageSwiper);
+        });
+
+        homeBtn?.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          playAudio(homeAudio);
+
+          setTimeout(() => {
+            window.location.href = this.href;
+          }, 500);
+        });
+
+        pageBtns.forEach((pageBtn) => {
+          pageBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            playAudio(pageAudio);
+
+            setTimeout(() => {
+              window.location.href = this.href;
+            }, 600);
+          });
+        });
+
+        prevBtn?.addEventListener("click", () => {
+          playAudio(navAudio);
+        });
+
+        nextBtn?.addEventListener("click", function (e) {
+          playAudio(navAudio);
+
+          if (imageSwiper.isEnd) {
+            e.preventDefault();
+
+            setTimeout(() => {
+              window.location.href = "types-of-daan.html";
+            }, 600);
+          }
+        });
+
+        englishBtn?.addEventListener("click", () => {
+          playAudio(engAudio);
+        });
+
+        hindiBtn?.addEventListener("click", () => {
+          playAudio(hinAudio);
+        });
+
+        gujaratiBtn?.addEventListener("click", () => {
+          playAudio(gujAudio);
+        });
+      });
+    </script>
   </body>
 </html>
