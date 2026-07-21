@@ -25,9 +25,9 @@
 
 
     @font-face {
-      font-family: "NotoSansGujaratiBold";
-      src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
-      font-weight: 700;
+      font-family: "ITFDevanagari";
+      src: url("../../fonts/ITFDevanagari.ttc") format("truetype");
+      font-weight: 700!important;
       font-style: normal;
       font-display: swap;
     }
@@ -35,7 +35,7 @@
     @font-face {
       font-family: "NotoSansGujaratiRegular";
       src: url("../../fonts/NotoSansGujarati-Regular.ttf") format("truetype");
-      font-weight: 400;
+      font-weight: 700!important;
       font-style: normal;
       font-display: swap;
     }
@@ -55,6 +55,18 @@
       height: 100%;
       overflow-x: hidden;
     }
+
+/* CORRECT */
+body[data-lang="hi"] {
+  font-family: "ITFDevanagari"!important;
+  font-weight: 700;
+}
+
+body[data-lang="gu"] {
+  font-family: "NotoSansGujaratiRegular"!important;
+  font-weight: 700;
+}
+
 
     body {
       width: 100vw !important;
