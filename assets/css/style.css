@@ -115,14 +115,14 @@ body[data-lang="gu"] {
     }
 
 
-    html[lang="Hindi"] .title span,
-    html[lang="Gujarati"] .title span {
+    html[lang="hi"] .title span,
+    html[lang="gu"] .title span {
       font-size: 5vw;
       font-weight: 700;
     }
 
-    html[lang="Hindi"] .title .description,
-    html[lang="Gujarati"] .title .description {
+    html[lang="hi"] .title .description,
+    html[lang="gu"] .title .description {
       font-size: 2vw;
       font-weight: 400;
     }
@@ -519,12 +519,8 @@ body[data-lang="gu"] {
 
     .text-box {
       text-align: center;
-      font-family: "BalooRegular";
-    }
+     font-family: "BalooRegular";
 
-
-    html[lang="Hindi"] .text-box p {
-      font-weight: 400;
     }
 
 
@@ -532,8 +528,12 @@ body[data-lang="gu"] {
       font-size: 2vw;
       line-height: 1.5;
       color: white;
-      font-weight: 700;
+      font-weight: lighter;
     }
+    body[data-lang="gu"] .text-box p {
+  font-family: "NotoSansGujaratiRegular"!important;
+  font-weight: 700;
+}
 
     .swiper-fade .swiper-slide {
       transition-timing-function: ease-in-out;
@@ -556,8 +556,8 @@ body[data-lang="gu"] {
     }
 
 
-    html[lang="Hindi"] .page-title,
-    html[lang="Gujarati"] .page-title {
+    html[lang="hi"] .page-title,
+    html[lang="gu"] .page-title {
       font-weight: 700;
     }
 
