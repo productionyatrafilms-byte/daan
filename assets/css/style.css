@@ -453,15 +453,15 @@ body[data-lang="gu"] {
       bottom: 45%;
       transform: translateY(-50%);
       display: flex;
-      gap: 30vw;
+      gap: 42vw;
       z-index: 20;
     }
 
 
     .custom-prev,
     .custom-next {
-      width: 3vw;
-      height: 3vw;
+      width: 4vw;
+      height: 4vw;
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -640,12 +640,30 @@ body[data-lang="gu"] {
     .pranam-img span {
       z-index: 15;
       position: absolute;
-      top: 17%;
+      top: 0%;
       left: 50%;
       font-size: 3.4vw;
       transform: translateX(-50%);
       font-family: "BalooRegular";
     }
+
+      .pranam-video{
+    position: absolute;
+    left: 51%;
+    top: 49%;
+    transform: translate(-50%,-50%);
+    width: 28vw;
+    height: 28vw;
+    border-radius: 50%;
+    background-color: white;
+  }
+
+  .pranam-video video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
     .pranam-container .home-btn-1 {
       position: absolute;
