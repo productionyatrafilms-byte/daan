@@ -6,6 +6,28 @@ const btnEn = document.querySelector(".english");
 const btnHi = document.querySelector(".hindi");
 const btnGu = document.querySelector(".gujarati");
 
+
+// ================= LANDSCAPE ALERT =================
+
+let landscapeAlertShown = false;
+
+function checkScreenSize() {
+  const isMobile =
+    /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+  if (isMobile && window.innerWidth < 768) {
+    if (!landscapeAlertShown) {
+      landscapeAlertShown = true;
+      alert("Please use Landscape!");
+    }
+  } else {
+    landscapeAlertShown = false;
+  }
+}
+
+window.addEventListener("load", checkScreenSize);
+window.addEventListener("resize", checkScreenSize);
+
 /* Apply saved language immediately to avoid English flash */
 const savedLangOnStart = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
 
