@@ -359,6 +359,16 @@ body[data-lang="gu"] {
       z-index: 4;
     }
 
+    .hero-img img{
+            position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 4;
+    }
+
     .topics {
       position: relative;
       width: 60%;
@@ -419,8 +429,8 @@ body[data-lang="gu"] {
     }
 
     .image-swiper {
-      width: 70%;
-      height: 34vw;
+      width: 77%;
+      height: 30vw;
       border-radius: 4vw;
       border: 0.4vw solid white;
       position: relative;
@@ -453,7 +463,7 @@ body[data-lang="gu"] {
       bottom: 45%;
       transform: translateY(-50%);
       display: flex;
-      gap: 42vw;
+      gap: 47vw;
       z-index: 20;
     }
 
@@ -562,7 +572,7 @@ body[data-lang="gu"] {
     }
 
     .pages {
-      margin-top: 1vw;
+      margin-top: 3vw;
       width: 40%;
       display: flex;
       justify-content: space-between;
