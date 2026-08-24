@@ -89,19 +89,11 @@ function applyLanguage(lang) {
   localStorage.setItem(LANG_KEY, lang);
 }
 
-async function loadTranslations() {
-  try {
-    const response = await fetch("./assets/json/data.json", {
-      cache: "no-store",
-    });
+function loadTranslations() {
+  translations = translationsData;
 
-    translations = await response.json();
-
-    const savedLang = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
-    applyLanguage(savedLang);
-  } catch (error) {
-    console.error("Failed to load translations:", error);
-  }
+  const savedLang = localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+  applyLanguage(savedLang);
 }
 
 function setActivePage() {
