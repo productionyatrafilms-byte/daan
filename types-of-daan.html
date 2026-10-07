@@ -44,27 +44,27 @@
           <div class="image-swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <video src="./assets/videos/4-1.mp4" autoplay muted loop></video>
+                <video src="./assets/videos/4-1.mp4" autoplay muted loop preload="auto"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-2.mp4" autoplay muted loop></video>
+                <video src="./assets/videos/4-2.mp4" muted loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video style="width: 120%; height: 130%;" src="./assets/videos/4-3.mp4" autoplay muted loop></video>
+                <video style="width: 120%; height: 130%;" src="./assets/videos/4-3.mp4" muted loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-4.mp4" autoplay muted loop></video>
+                <video src="./assets/videos/4-4.mp4" muted loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-5.mp4" autoplay muted loop></video>
+                <video src="./assets/videos/4-5.mp4" muted loop preload="none"></video>
               </div>
 
               <div class="swiper-slide">
-                <video src="./assets/videos/4-6.mp4" autoplay muted loop></video>
+                <video src="./assets/videos/4-6.mp4" muted loop preload="none"></video>
               </div>
             </div>
           </div>
@@ -164,7 +164,6 @@
     <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/data.js"></script>
     <script src="./assets/js/app.js"></script>
-        <script src="./assets/js/djp.js"></script>
     <script>
   document.addEventListener("DOMContentLoaded", () => {
     const homeBtn = document.querySelector(".home-btn");
@@ -249,6 +248,40 @@
     });
 
     textSwiper.controller.control = imageSwiper;
+
+    // Only the active slide video loads and plays; inactive ones stay unloaded
+    const slideVideos = Array.from(
+      document.querySelectorAll(".image-swiper .swiper-slide video"),
+    );
+
+    function syncSlideVideos(swiper) {
+      slideVideos.forEach((video, index) => {
+        if (index === swiper.activeIndex) {
+          video.preload = "auto";
+
+          if (video.paused) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          }
+        } else {
+          video.preload = "none";
+        }
+      });
+    }
+
+    function pauseInactiveSlideVideos(swiper) {
+      slideVideos.forEach((video, index) => {
+        if (index !== swiper.activeIndex && !video.paused) {
+          video.pause();
+        }
+      });
+    }
+
+    syncSlideVideos(imageSwiper);
+    imageSwiper.on("slideChange", () => syncSlideVideos(imageSwiper));
+    imageSwiper.on("slideChangeTransitionEnd", () =>
+      pauseInactiveSlideVideos(imageSwiper),
+    );
 
     function updateNavButtons(swiper) {
       // Hide Previous button on the first slide
